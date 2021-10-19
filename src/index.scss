@@ -16,16 +16,19 @@ body {
 
 .Overlay {
   position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
+  background-attachment: fixed;
 }
 
 .LilCart {
   position: absolute;
+  overflow: auto;
   width: 400px;
   height: 95.6%;
   right: 0;
@@ -45,9 +48,43 @@ body {
       cursor: pointer;
     }
   }
+  .CartEmpty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    p {
+      width: 280px;
+      line-height: 24px;
+    }
+    img{
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+    }
+    button{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 245px;
+      margin-top: 20px;
+      img{
+        width: 15px;
+        height: 15px;
+        position: relative;
+        top: 9px;
+        margin-right: 15px;
+        transition: transform 0.15s ease-in-out;
+      }
+    }
+  }
   .Items {
+    position: relative;
     flex: 1;
     overflow: auto;
+    overflow-x: hidden;
     .CartItem {
       display: flex;
       align-items: center;
@@ -125,10 +162,12 @@ header{
   align-items: center;
   padding: 20px;
   border-bottom: 2px solid #8ab0ed;
+  a:link {
+    text-decoration: none;
+  }
   ul{
     list-style-type: none;
   }
-
   .headerInfo{
     h3 {
       text-transform: uppercase;
@@ -137,12 +176,12 @@ header{
       opacity: 0.6;
     }
   }
-
   .headerLeft {
     display: flex;
     align-items: center;
     h3, p {
       margin: 0;
+      color: #000;
     }
     img {
       width: 45px;
@@ -158,7 +197,21 @@ header{
       cursor: pointer;
       border: 0;
       &:hover {
-        transform: translateY(-1px);
+        transform: translateY(-2px);
+      }
+    }
+    .SecondLi {
+      margin-right: 30px;
+      cursor: pointer;
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+    .ThirdLi {
+      margin-right: 10px;
+      cursor: pointer;
+      &:hover {
+        transform: translateY(-2px);
       }
     }
     img {
@@ -189,20 +242,30 @@ header{
       border-radius: 10px;
       padding: 5px 15px;
       display: flex;
+      position: relative;
+      .clear {
+        position: absolute;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        padding-right: 10px;
+      }
       img {
         width: 20px;
         height: 15px;
         opacity: 0.4;
       }
       input {
-        border: 0;
         font-size: 16px;
         width: 200px;
+        border: 0;
+        outline: none;
       }
     }
   }
 
-  .Sneakers {
+  .Tabak {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

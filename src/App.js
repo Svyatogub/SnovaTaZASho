@@ -1,53 +1,74 @@
 import React from "react";
-import Card from "./components/Card/Card";
+import axios from "axios";
 import Header from "./components/Header";
 import LilCart from "./components/LilCart";
+import { Route } from "react-router-dom";
+
+import Home from "./pages/Home";
+import Favorites from "./pages/Favorites";
 
 function App() {
   const [items, setItems] = React.useState([])
   const [cartItems, setCartItems] = React.useState([])
+  const [favorites, setFavorites] = React.useState([])
+  const [searchValue, setSearchValue] = React.useState('')
   const [cartOpen, setCartOpen] = React.useState(false)
 
   React.useEffect(() => {
-    fetch('https://616704b513aa1d00170a6957.mockapi.io/items')
-    .then((res) => {
-      return res.json()
-    })
-    .then((json) => {
-      setItems(json)
-    })
+    axios.get('https://616704b513aa1d00170a6957.mockapi.io/items').then(res => {
+      setItems(res.data);
+    });
+    axios.get('https://616704b513aa1d00170a6957.mockapi.io/cart').then(res => {
+      setCartItems(res.data);
+    });
+    axios.get('https://616704b513aa1d00170a6957.mockapi.io/favorites').then(res => {
+      setFavorites(res.data);
+    });
   }, [])
 
   const onAddToCart = (obj) => {
+    axios.post('https://616704b513aa1d00170a6957.mockapi.io/cart', obj);
     setCartItems(prev => [...prev, obj]);
   }
-  console.log(cartItems)
+
+  const onAddToFavorite = (obj) => {
+    console.log(obj)
+      if(favorites.find(obj => obj.id === obj.id)) {
+      axios.delete(`/https://616704b513aa1d00170a6957.mockapi.io/favorites/${obj.id}`)
+      setFavorites((prev) => prev.filter(item => item.id !== obj.id));
+      } else {
+      axios.post('https://616704b513aa1d00170a6957.mockapi.io/favorites', obj);
+      setFavorites((prev) => [...prev, obj]);
+    }
+  }
+
+  const onRemoveItem = (id) => {
+    axios.delete(`https://616704b513aa1d00170a6957.mockapi.io/cart/${id}`);
+    setCartItems((prev) => prev.filter(item => item.id !== id));
+  }
+  
+  const onChangeSearchInput = (event) =>{
+    setSearchValue(event.target.value);
+  }
 
   return (
     <div className="wrapper">
-      {cartOpen && <LilCart items={cartItems} onClose={() => setCartOpen(false)}/>}
+      {cartOpen && <LilCart items={cartItems} onClose={() => setCartOpen(false)} onRemove={onRemoveItem}/>}
       <Header onClickCart={() => setCartOpen(true)}/>
-      <div className="Content">
-        <div className="Search">
-          <h1>Весь никотин</h1>
-          <div className="Search-block">
-            <img src="./img/search-solid.svg" alt="search"/>
-            <input placeholder="Поиск..."/>
-          </div>
-        </div>
-        
-        <div className="Sneakers">
-          {items.map((item) => (
-            <Card 
-              title={item.name}
-              price={item.price}
-              imageUrl={item.imageUrl}
-              onFavorite={() => console.log("Добавили в закладки")}
-              onPlus={(obj) => onAddToCart(obj)}
-            />
-          ))}
-        </div>
-      </div>item
+
+      <Route path="/" exact>
+        <Home 
+          items={items} 
+          searchValue={searchValue} 
+          setSearchValue={setSearchValue}
+          onChangeSearchInput={onChangeSearchInput}
+          onAddToFavorite={onAddToFavorite}
+          onAddToCart={onAddToCart}
+        />
+      </Route>
+      <Route path="/favorites" exact>
+        <Favorites items={favorites} onAddToFavorite={onAddToFavorite}/>
+      </Route>
     </div>
   )
 }
