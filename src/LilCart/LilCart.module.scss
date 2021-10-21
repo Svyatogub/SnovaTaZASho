@@ -1,0 +1,159 @@
+.Overlay {
+    position: absolute;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    background-attachment: fixed;
+    visibility: hidden;
+}
+.OverlayVisible {
+    visibility: visible;
+    .LilCart {
+        transform: translateX(0);
+    }
+}
+.LilCart {
+    position: absolute;
+    overflow: auto;
+    width: 400px;
+    height: 95.6%;
+    right: 0;
+    background: #ffffff;
+    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    h2 {
+      margin: 0;
+      padding-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+    }
+    .CartEmpty {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      p {
+        width: 280px;
+        line-height: 24px;
+      }
+      img{
+        width: 120px;
+        margin-bottom: 20px;
+      }
+      button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 245px;
+        margin-top: 20px;
+        img{
+          width: 15px;
+          height: 15px;
+          position: relative;
+          top: 9px;
+          margin-right: 15px;
+          transition: transform 0.15s ease-in-out;
+        }
+      }
+    }
+    .WholeBlock {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      .Items {
+        position: relative;
+        flex: 1;
+        overflow: auto;
+        overflow-x: hidden;
+        .CartItem {
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          margin-bottom: 10px;
+          border: 1px solid #8ab0ed;
+          border-radius: 30px;
+          p {
+            font-size: 16px;
+            width: 200px;
+          }
+          b{
+            font-size: 15px;
+          }
+          img {
+            width: 120px;
+            height: 100px;
+            padding: 20px;
+            background-image: no-repeat;
+            z-index: 100;
+          }
+          .rmvbtn {
+            width: 30px;
+            height: 30px;
+            opacity: 0.5;
+            cursor: pointer;
+            transition: opacity 0.15s ease-in-out;
+            &:hover{
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+      
+    .CartBlock {
+      ul{
+        margin: 10px 20px 20px -20px;
+        li {
+          display: flex;
+          align-items: flex-end;
+          margin-bottom: 10px;
+        }
+        div {
+          flex: 1;
+          height: 1px;
+          border-bottom: 1px dashed #DFDFDF;
+          position: relative;
+          top: -4px;
+          margin: 0px 10px 0px 10px;
+        }
+      }
+    }
+  }
+
+.GreenButton {
+    width: 100%;
+    height: 50px;
+    background: #9dd558;
+    border-radius: 18px;
+    border: 0;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    &:hover {
+      background: lighten(#9dd558, 5%);
+    }
+    &:active {
+      background: darken(#9dd558, 5%);
+    }
+    &:disabled {
+      background-color: #bebebe;
+      cursor: default;
+      animation: button-loading 0.8s ease-in-out infinite;
+    }
+}
