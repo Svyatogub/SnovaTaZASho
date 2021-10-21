@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/SnovaTaZASho/static/css/main.082a1b31.chunk.css",
-    "main.js": "/SnovaTaZASho/static/js/main.d0c4f196.chunk.js",
-    "main.js.map": "/SnovaTaZASho/static/js/main.d0c4f196.chunk.js.map",
+    "main.js": "/SnovaTaZASho/static/js/main.a948345a.chunk.js",
+    "main.js.map": "/SnovaTaZASho/static/js/main.a948345a.chunk.js.map",
     "runtime-main.js": "/SnovaTaZASho/static/js/runtime-main.375d5100.js",
     "runtime-main.js.map": "/SnovaTaZASho/static/js/runtime-main.375d5100.js.map",
     "static/js/2.c46d4336.chunk.js": "/SnovaTaZASho/static/js/2.c46d4336.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.375d5100.js",
     "static/js/2.c46d4336.chunk.js",
     "static/css/main.082a1b31.chunk.css",
-    "static/js/main.d0c4f196.chunk.js"
+    "static/js/main.a948345a.chunk.js"
   ]
 }
