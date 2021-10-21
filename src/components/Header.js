@@ -11,7 +11,7 @@ function Header(props) {
         <header>
             <Link to="/">
                 <div className="headerLeft">
-                    <img src="./img/bong-solid.svg" alt="logo"/>
+                    <img src="img/bong-solid.svg" alt="logo"/>
                     <div className="headerInfo">
                         <h3>Давай Закинемся</h3>
                         <p>Табачный магазин</p>
@@ -20,17 +20,17 @@ function Header(props) {
             </Link>
             <ul className="headerRight">
             <li className="FirstLi" onClick={props.onClickCart}>
-                <img src="./img/shopping-bag-solid.svg" alt="basket"/>
+                <img src="img/shopping-bag-solid.svg" alt="basket"/>
                 <span>{totalPrice}грн.</span>
             </li>
             <li className="SecondLi">
                 <Link to="/favorites">
-                    <img src="./img/heart-solid.svg" alt="favorites"/>
+                    <img src="img/heart-solid.svg" alt="favorites"/>
                 </Link>
             </li>
             <li className="ThirdLi">
                 <Link to="/orders">
-                    <img src="./img/user-solid.svg" alt="user"/>
+                    <img src="img/user-solid.svg" alt="user"/>
                 </Link>
             </li>
             </ul>

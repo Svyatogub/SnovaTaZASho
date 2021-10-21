@@ -40,7 +40,7 @@ function LilCart({onClose, onRemove, items = [], open}) {
             <div className={styles.LilCart}> 
             <h2>
                 Корзина
-                <img onClick={onClose} className={styles.rmvbtn} src="./img/remove.svg" alt="remove"/>
+                <img onClick={onClose} className={styles.rmvbtn} src="img/remove.svg" alt="remove"/>
             </h2>
             {
                 items.length > 0 ? 
@@ -53,7 +53,7 @@ function LilCart({onClose, onRemove, items = [], open}) {
                                 <p>{obj.name}</p>
                                 <b>{obj.price}грн.</b>
                             </div>
-                            <img onClick={() => onRemove(obj.id)} className={styles.rmvbtn} src="./img/remove.svg" alt="remove"/>
+                            <img onClick={() => onRemove(obj.id)} className={styles.rmvbtn} src="img/remove.svg" alt="remove"/>
                         </div>
                     ))}
                     </div>
@@ -79,7 +79,7 @@ function LilCart({onClose, onRemove, items = [], open}) {
                     <Info 
                         title={isOrderComplete ? "Заказ оформлен!" : "Корзина пустая!" }
                         descriprion={isOrderComplete ? `Ваш заказ #${orderId} скоро будет передан курьерской доставке` : "Добавьте хотя бы один товар что бы сделать заказ"} 
-                        image={isOrderComplete ? "./img/order-colpete.jpg" : "./img/cart-empty.jpg" }
+                        image={isOrderComplete ? "img/order-colpete.jpg" : "img/cart-empty.jpg" }
                     />
             }
             </div>

@@ -33,8 +33,8 @@ function Home({items,
         <div className="Search">
           <h1>{searchValue ? `Поиск по запросу: "${searchValue}"` : "Весь снюс"}</h1>
           <div className="Search-block">
-            {searchValue && <img onClick={() => setSearchValue("")} className="clear" src="./img/remove.svg" alt="clear"/>}
-            <img src="./img/search-solid.svg" alt="search"/>
+            {searchValue && <img onClick={() => setSearchValue("")} className="clear" src="img/remove.svg" alt="clear"/>}
+            <img src="img/search-solid.svg" alt="search"/>
             <input onChange={onChangeSearchInput} value={searchValue} placeholder="Поиск..."/>
           </div>
         </div>
